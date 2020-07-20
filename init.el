@@ -25,5 +25,7 @@
 
 ;; Personal Settings
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(if (eq system-type 'darwin)
+    (require 'init-mac))
 (require 'init-org)
 (require 'init-python)
