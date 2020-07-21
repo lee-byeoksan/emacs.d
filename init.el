@@ -27,5 +27,6 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (if (eq system-type 'darwin)
     (require 'init-mac))
+(require 'init-terminal)
 (require 'init-org)
 (require 'init-python)
