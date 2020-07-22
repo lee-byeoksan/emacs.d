@@ -16,6 +16,7 @@
 (global-set-key (kbd "<f8>") 'display-line-numbers-mode)
 (global-hl-line-mode)
 (setq-default indent-tabs-mode nil)
+(setq show-trailing-whitespace t)
 
 ;;; Added by Custom
 (custom-set-variables
