@@ -18,6 +18,11 @@
 (setq-default indent-tabs-mode nil)
 (setq show-trailing-whitespace t)
 
+(require 'ido)
+(ido-mode t)
+(ido-everywhere)
+(setq ido-enable-flex-matching t)
+
 ;;; Added by Custom
 (custom-set-variables
  '(custom-enabled-themes (quote (misterioso)))
