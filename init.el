@@ -10,10 +10,16 @@
 (if window-system
     (tool-bar-mode 0))
 
+(defun reload-init ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
 (transient-mark-mode 1)
 (global-font-lock-mode t)
 (global-display-line-numbers-mode 1)
+(global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "<f8>") 'display-line-numbers-mode)
+(global-set-key (kbd "<f12>") 'reload-init)
 (global-hl-line-mode)
 (setq-default indent-tabs-mode nil)
 (setq show-trailing-whitespace t)
