@@ -10,9 +10,9 @@
 ;; vterm
 (use-package vterm
   :ensure t
-  :bind
-  ("C-]" . vterm--self-insert)
-  ("C-u" . vterm--self-insert)
+  :bind (:map vterm-mode-map
+              ("C-]" . vterm--self-insert)
+              ("C-u" . vterm--self-insert))
   :config
   (setq vterm-always-compile-module t)
   :hook (vterm-mode . common-term-setup))
