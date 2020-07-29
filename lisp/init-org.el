@@ -6,5 +6,6 @@
 
 (setq org-indent-mode t)
 (setq org-special-ctrl-a/e t)
+(setq org-directory "~/.orgs")
 
 (provide 'init-org)
