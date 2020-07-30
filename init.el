@@ -26,12 +26,21 @@
 (global-set-key (kbd "<f12>") 'reload-init)
 (global-hl-line-mode)
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 (setq show-trailing-whitespace t)
 
 (use-package disable-mouse
   :ensure t
   :config
   (global-disable-mouse-mode))
+
+(scroll-bar-mode 0)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:height 160)))))
 
 (require 'ido)
 (ido-mode t)
