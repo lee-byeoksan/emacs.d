@@ -28,6 +28,11 @@
 (setq-default indent-tabs-mode nil)
 (setq show-trailing-whitespace t)
 
+(use-package disable-mouse
+  :ensure t
+  :config
+  (global-disable-mouse-mode))
+
 (require 'ido)
 (ido-mode t)
 (ido-everywhere)
