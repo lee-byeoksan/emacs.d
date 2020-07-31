@@ -4,4 +4,6 @@
 /eshell
 /bookmarks
 \#*
-ido.last
+/ido.last
+/cache
+/tramp
