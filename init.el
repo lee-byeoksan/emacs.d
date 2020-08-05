@@ -27,7 +27,7 @@
 (global-hl-line-mode)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq show-trailing-whitespace t)
+(setq-default show-trailing-whitespace t)
 
 (use-package disable-mouse
   :ensure t
