@@ -10,6 +10,7 @@
   (package-install 'use-package))
 
 ;; General Settings
+(set-input-method 'korean-hangul390)
 (menu-bar-mode 0)
 (if window-system
     (tool-bar-mode 0))
