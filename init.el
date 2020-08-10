@@ -26,6 +26,11 @@
 (global-set-key (kbd "<f8>") 'display-line-numbers-mode)
 (global-set-key (kbd "<f12>") 'reload-init)
 (global-hl-line-mode)
+(set-face-attribute 'hl-line nil
+                    :inherit nil
+                    :underline "red"
+                    :background nil)
+
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default show-trailing-whitespace t)
@@ -58,6 +63,12 @@
  '(package-selected-packages (quote (use-package)))
  '(winner-mode t))
 
+;; Should be placed after color scheme configuration
+(set-face-attribute 'mode-line nil
+                    :inherit nil
+                    :background "#56b1f7")
+(display-time-mode)
+(column-number-mode)
 
 ;; Personal Settings
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
