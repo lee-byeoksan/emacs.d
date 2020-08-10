@@ -10,6 +10,8 @@
   (package-install 'use-package))
 
 ;; General Settings
+(setq system-time-locale "C")
+(set-language-environment "UTF-8")
 (set-input-method 'korean-hangul390)
 (menu-bar-mode 0)
 (if window-system
