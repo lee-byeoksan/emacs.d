@@ -6,6 +6,7 @@
 
 (setq org-directory "~/.orgs")
 (defvar byeoksan/org-inbox (concat org-directory "/inbox.org"))
+(defvar byeoksan/org-gtd (concat org-directory "/tasks.org"))
 
 (setq org-indent-mode t)
 (setq org-special-ctrl-a/e t)
@@ -25,7 +26,7 @@
 (setq org-agenda-restore-windows-after-quit t)
 (setq org-agenda-files
       (list byeoksan/org-inbox
-            (concat org-directory "/gtd/tasks.org")))
+            byeoksan/org-gtd))
 
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
