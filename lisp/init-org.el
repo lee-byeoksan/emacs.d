@@ -23,6 +23,16 @@
         ))
 (setq org-agenda-window-setup 'only-window)
 (setq org-agenda-restore-windows-after-quit t)
-(setq org-agenda-files (list byeoksan/org-inbox))
+(setq org-agenda-files
+      (list byeoksan/org-inbox
+            (concat org-directory "/gtd/tasks.org")))
+
+(setq org-agenda-custom-commands
+      '(("n" "Agenda and all TODOs"
+         ((agenda "")
+          (todo "TODO")
+          (todo "NEXT")
+          (todo "WAIT")
+          (todo "SCHED")))))
 
 (provide 'init-org)
