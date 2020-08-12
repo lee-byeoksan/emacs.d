@@ -33,6 +33,8 @@
                     :underline "red"
                     :background nil)
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default show-trailing-whitespace t)
