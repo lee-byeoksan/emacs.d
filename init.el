@@ -44,6 +44,17 @@
   :config
   (global-disable-mouse-mode))
 
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1))
+
+(use-package counsel
+  :ensure t)
+
+(use-package swiper
+  :ensure t)
+
 (scroll-bar-mode 0)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
