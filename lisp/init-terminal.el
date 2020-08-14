@@ -1,4 +1,4 @@
-;; -*- mode: elisp -*-
+;; -*- lexical-binding: t -*-
 
 (defun common-term-setup ()
   (display-line-numbers-mode 0)

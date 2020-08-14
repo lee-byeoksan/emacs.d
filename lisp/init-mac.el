@@ -1,4 +1,4 @@
-;; -*- mode: elisp -*-
+;; -*- lexical-binding: t -*-
 
 (setq ns-command-modifier 'meta)
 

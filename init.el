@@ -1,4 +1,4 @@
-;; init.el
+;; -*- lexical-binding: t -*-
 
 ;; Package System
 (require 'package)

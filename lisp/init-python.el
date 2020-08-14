@@ -1,4 +1,4 @@
-;; -*- mode: elisp -*-
+;; -*- lexical-binding: t -*-
 
 (setq python-indent-offset 2)
 
