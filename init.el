@@ -39,6 +39,9 @@
 (setq-default tab-width 4)
 (setq-default show-trailing-whitespace t)
 
+(setq auto-save-file-name-transform '((".*" "~/.emacs.d/auto-saves/" t)))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
 (use-package disable-mouse
   :ensure t
   :config
@@ -75,7 +78,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
- '(package-selected-packages (quote (use-package)))
  '(winner-mode t))
 
 ;; Should be placed after color scheme configuration
