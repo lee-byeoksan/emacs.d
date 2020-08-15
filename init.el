@@ -79,6 +79,10 @@
   (set-fontset-font t 'hangul (font-spec :name "D2Coding"))
   (setq face-font-rescale-alist '(("D2Coding" . 1.23))))
 
+(when (eq system-type 'darwin)
+  (set-fontset-font t 'hangul (font-spec :name "Arial Unicode MS"))
+  (setq face-font-rescale-alist '(("Arial Unicode MS" . 1.25))))
+
 (require 'ido)
 (ido-mode t)
 (ido-everywhere)
