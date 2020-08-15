@@ -36,4 +36,7 @@
           (todo "WAIT")
           (todo "SCHED")))))
 
+(setq org-enforce-todo-dependencies t)
+(setq org-agenda-dim-blocked-tasks 'invisible)
+
 (provide 'init-org)
