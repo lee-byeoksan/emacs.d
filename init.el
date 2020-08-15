@@ -32,7 +32,19 @@
                     :inherit nil
                     :underline "red"
                     :background nil)
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
 
+(defun move-line-down ()
+  (interactive)
+  (forward-line)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(global-set-key (kbd "M-S-<up>") 'move-line-up)
+(global-set-key (kbd "M-S-<down>") 'move-line-down)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (setq-default indent-tabs-mode nil)
