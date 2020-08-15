@@ -8,7 +8,7 @@
 (defvar byeoksan/org-inbox (concat org-directory "/inbox.org"))
 (defvar byeoksan/org-gtd (concat org-directory "/tasks.org"))
 
-(setq org-indent-mode t)
+(setq org-indent-mode nil)
 (setq org-special-ctrl-a/e t)
 (setq org-default-notes-file byeoksan/org-inbox)
 (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "SCHED(s)" "DONE(d)")))
