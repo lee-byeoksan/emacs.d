@@ -43,6 +43,7 @@
 (setq org-agenda-dim-blocked-tasks 'invisible)
 
 (setq org-tags-column -80)
+(setq org-agenda-tags-column 140)
 (set-face-attribute 'org-tag nil
                     :foreground "orange"
                     :weight 'bold)
