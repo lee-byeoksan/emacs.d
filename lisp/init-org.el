@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t -*-
 
+(use-package org
+  :ensure t)
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -38,5 +41,10 @@
 
 (setq org-enforce-todo-dependencies t)
 (setq org-agenda-dim-blocked-tasks 'invisible)
+
+(setq org-tags-column -80)
+(set-face-attribute 'org-tag nil
+                    :foreground "orange"
+                    :weight 'bold)
 
 (provide 'init-org)
