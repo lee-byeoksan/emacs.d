@@ -72,6 +72,12 @@
 
 (scroll-bar-mode 0)
 
+(use-package fill-column-indicator
+  :ensure t
+  :config
+  (setq-default fci-rule-column 80)
+  )
+
 ;; reference: https://crazia.tistory.com/entry/Emacs-24x-%EB%B2%84%EC%A0%BC-%ED%95%9C%EA%B8%80-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95-orgmode-%EC%9D%98-%ED%95%9C%EA%B8%80-%ED%85%8C%EC%9D%B4%EB%B8%94-%EA%B9%A8%EC%A7%80%EC%A7%80-%EC%95%8A%EA%B2%8C-%EB%B3%B4%EC%9D%B4%EA%B8%B0
 (when (eq system-type 'gnu/linux)
   (set-face-font 'default (font-spec :name "D2Coding":size 18)))
