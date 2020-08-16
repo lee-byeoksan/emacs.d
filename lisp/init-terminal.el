@@ -1,8 +1,9 @@
 ;; -*- lexical-binding: t -*-
 
 (defun common-term-setup ()
-  (display-line-numbers-mode 0)
-  (setq-local global-hl-line-mode nil))
+  (setq-local global-hl-line-mode nil)
+  (setq-local show-trailing-whitespace nil)
+  )
 
 ;; term, ansi-term
 (add-hook 'term-mode-hook #'common-term-setup)
