@@ -10,6 +10,7 @@
   (package-install 'use-package))
 
 ;; General Settings
+(setq-default major-mode 'indented-text-mode)
 (setq system-time-locale "C")
 (set-language-environment "UTF-8")
 (set-input-method 'korean-hangul390)
@@ -23,7 +24,6 @@
 
 (transient-mark-mode 1)
 (global-font-lock-mode t)
-(global-display-line-numbers-mode 1)
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "<f8>") 'display-line-numbers-mode)
 (global-set-key (kbd "<f12>") 'reload-init)
@@ -103,6 +103,7 @@
 
 ;; Personal Settings
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'init-lines)
 (if (eq system-type 'darwin)
     (require 'init-mac))
 (require 'init-terminal)
