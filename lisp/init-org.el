@@ -24,6 +24,10 @@
          (file+headline "" "Notes")
          (file "templates/flt-note.tpl")
          :kill-buffer t)
+        ("N" "NEXT" entry
+         (file byeoksan/org-gtd)
+         (file "templates/next.tpl")
+         :kill-buffer t)
         ))
 (setq org-agenda-window-setup 'only-window)
 (setq org-agenda-restore-windows-after-quit t)
