@@ -6,4 +6,11 @@
 (require 'erlang-start)
 (setq erlang-indent-level 2)
 
+(defun erlang-mode-setup ()
+  (setq-local fci-rule-column 120)
+  (fci-mode 1)
+  )
+
+(add-hook 'erlang-mode-hook #'erlang-mode-setup)
+
 (provide 'init-erlang)
