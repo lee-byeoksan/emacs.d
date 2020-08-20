@@ -51,7 +51,7 @@
 (setq-default tab-width 4)
 (setq-default show-trailing-whitespace t)
 
-(setq auto-save-file-name-transform '((".*" "~/.emacs.d/auto-saves/" t)))
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-saves/" t)))
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 (use-package disable-mouse
