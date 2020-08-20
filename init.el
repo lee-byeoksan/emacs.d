@@ -65,10 +65,15 @@
   (ivy-mode 1))
 
 (use-package counsel
-  :ensure t)
+  :ensure t
+  :config
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "C-x b") 'counsel-switch-buffer))
 
 (use-package swiper
-  :ensure t)
+  :ensure t
+  :config
+  (global-set-key "\C-s" 'swiper))
 
 (scroll-bar-mode 0)
 
