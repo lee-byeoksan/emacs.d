@@ -68,7 +68,8 @@
   :ensure t
   :config
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-x b") 'counsel-switch-buffer))
+  (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
+  (global-set-key (kbd "M-s .") 'swiper-thing-at-point))
 
 (use-package swiper
   :ensure t
