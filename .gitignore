@@ -1,7 +1,7 @@
 *~
 /auto-save-list
-/auto-saves
-/backups
+/auto-saves/*
+/backups/*
 /elpa
 /eshell
 /bookmarks
