@@ -121,3 +121,5 @@
 (require 'init-terminal)
 (require 'init-org)
 (require 'init-python)
+
+(require 'init-lsp)
