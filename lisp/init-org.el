@@ -14,7 +14,9 @@
 (setq org-indent-mode nil)
 (setq org-special-ctrl-a/e t)
 (setq org-default-notes-file byeoksan/org-inbox)
-(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "SCHED(s)" "DONE(d)")))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "SCHED(s)" "DONE(d)")
+        (sequence "NOTE")))
 (setq org-capture-templates
       '(("t" "TODO" entry
          (file+headline "" "Tasks")
@@ -40,6 +42,7 @@
          ((agenda "")
           (todo "TODO")
           (todo "NEXT")
+          (todo "NOTE")
           (todo "WAIT")
           (todo "SCHED")))))
 
