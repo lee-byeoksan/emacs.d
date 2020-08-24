@@ -97,6 +97,9 @@
 (ido-everywhere)
 (setq ido-enable-flex-matching t)
 
+(use-package magit
+  :ensure t)
+
 ;;; Added by Custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -104,6 +107,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
+ '(package-selected-packages
+   (quote
+    (magit vterm use-package lsp-ui flycheck fill-column-indicator disable-mouse counsel)))
  '(winner-mode t))
 
 ;; Should be placed after color scheme configuration
@@ -115,6 +121,9 @@
 
 ;; Personal Settings
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+(require 'init-magit)
+
 (require 'init-lines)
 (if (eq system-type 'darwin)
     (require 'init-mac))
@@ -123,3 +132,4 @@
 (require 'init-python)
 
 (require 'init-lsp)
+;;; init.el ends here
