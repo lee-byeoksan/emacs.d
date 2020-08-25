@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Customized configurations to other file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
 ;; Package System
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -86,6 +89,10 @@
   (setq-default fci-rule-column 80)
   )
 
+(load-theme 'misterioso)
+(enable-theme 'misterioso)
+(winner-mode t)
+
 ;; reference: https://crazia.tistory.com/entry/Emacs-24x-%EB%B2%84%EC%A0%BC-%ED%95%9C%EA%B8%80-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95-orgmode-%EC%9D%98-%ED%95%9C%EA%B8%80-%ED%85%8C%EC%9D%B4%EB%B8%94-%EA%B9%A8%EC%A7%80%EC%A7%80-%EC%95%8A%EA%B2%8C-%EB%B3%B4%EC%9D%B4%EA%B8%B0
 (when (eq system-type 'gnu/linux)
   (set-face-font 'default (font-spec :name "D2Coding":size 18)))
@@ -101,18 +108,6 @@
 
 (use-package magit
   :ensure t)
-
-;;; Added by Custom
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (misterioso)))
- '(package-selected-packages
-   (quote
-    (magit vterm use-package lsp-ui flycheck fill-column-indicator disable-mouse counsel)))
- '(winner-mode t))
 
 ;; Should be placed after color scheme configuration
 (set-face-attribute 'mode-line nil
