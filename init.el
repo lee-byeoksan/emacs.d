@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; initl.el --- Emacs custom configuration -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 ;; Package System
 (require 'package)

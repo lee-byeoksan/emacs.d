@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; init-terminal.el --- Configurations on terminals -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (defun common-term-setup ()
   (setq-local global-hl-line-mode nil)
@@ -19,3 +21,4 @@
   :hook (vterm-mode . common-term-setup))
 
 (provide 'init-terminal)
+;;; init-terminal.el ends here

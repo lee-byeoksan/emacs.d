@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; init-lines.el --- Configurations on lines -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (defun enable-line-numbers ()
   (display-line-numbers-mode 1))
@@ -10,3 +12,4 @@
     (add-hook hook 'enable-line-numbers)))
 
 (provide 'init-lines)
+;;; init-lines.el ends here

@@ -1,9 +1,13 @@
-;; -*- lexical-binding: t -*-
+;;; init-lsp.el --- Configurations about LSP -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (use-package flycheck
   :ensure t
   :init
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  :config
+  (setq flycheck-emacs-lisp-load-path 'inherit))
 
 (use-package lsp-mode
   :ensure t
@@ -23,3 +27,4 @@
   :commands lsp-ui-mode)
 
 (provide 'init-lsp)
+;;; init-lsp.el ends here

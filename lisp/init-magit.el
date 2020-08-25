@@ -4,5 +4,7 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(global-magit-file-mode t)
+
 (provide 'init-magit)
 ;;; init-magit.el ends here

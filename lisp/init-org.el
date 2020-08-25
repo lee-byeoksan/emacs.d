@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; init-org.el --- Configurations about Org -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (use-package org
   :ensure t)
@@ -56,3 +58,4 @@
                     :weight 'bold)
 
 (provide 'init-org)
+;;; init-org.el ends here
