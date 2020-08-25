@@ -10,3 +10,4 @@
 /cache
 /tramp
 .lsp-session*
+/transient
