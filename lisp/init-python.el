@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq python-indent-offset 2)
+(setq python-indent-offset 4)
 
 (provide 'init-python)
 ;;; init-python.el ends here
