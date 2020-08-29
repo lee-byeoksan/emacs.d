@@ -9,10 +9,15 @@
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
+(use-package company
+  :ensure t
+  :hook (
+         (after-init-hook . global-company-mode)
+         )
+  )
+
 (use-package lsp-mode
   :ensure t
-  :init
-  (setq )
   :config
   (setq lsp-keymap-prefix "C-c C-l")
   (setq lsp-pyls-server-command "~/.local/bin/pyls")
