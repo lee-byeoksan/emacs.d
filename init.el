@@ -129,4 +129,5 @@
 (require 'init-python)
 
 (require 'init-lsp)
+(require 'init-feed)
 ;;; init.el ends here
