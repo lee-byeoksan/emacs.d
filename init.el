@@ -128,6 +128,7 @@
 (require 'init-org)
 (require 'init-python)
 
+(require 'init-cc)
 (require 'init-lsp)
 (require 'init-feed)
 ;;; init.el ends here
