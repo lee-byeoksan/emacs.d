@@ -23,6 +23,9 @@
 (if window-system
     (tool-bar-mode 0))
 
+;; Suppress cl-functions warnings
+(setq byte-complile-warnings '(not cl-functions))
+
 (defun reload-init ()
   (interactive)
   (load-file "~/.emacs.d/init.el"))
