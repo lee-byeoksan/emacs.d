@@ -15,6 +15,9 @@
   (package-install 'use-package))
 
 ;; General Settings
+(when (eq system-type 'darwin)
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+  (add-to-list 'exec-path "/usr/local/bin"))
 (setq-default major-mode 'indented-text-mode)
 (setq system-time-locale "C")
 (set-language-environment "UTF-8")
