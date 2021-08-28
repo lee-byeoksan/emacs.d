@@ -132,6 +132,7 @@
     (require 'init-mac))
 (require 'init-terminal)
 (require 'init-org)
+(require 'init-org-roam)
 (require 'init-python)
 
 (require 'init-cc)
