@@ -12,3 +12,4 @@
 .lsp-session*
 /transient
 /custom.el
+org-roam.db
