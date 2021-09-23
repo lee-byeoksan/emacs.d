@@ -7,6 +7,10 @@
 (use-package typescript-mode
   :ensure t)
 
+;; CMake
+(use-package cmake-mode
+  :ensure t)
+
 (provide 'init-pl)
 
 ;;; init-pl.el ends here
