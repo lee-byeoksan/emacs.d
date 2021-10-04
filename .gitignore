@@ -12,4 +12,8 @@
 .lsp-session*
 /transient
 /custom.el
-org-roam.db
+/flycheck_init.el
+
+# Org-Roam
+/org-roam.db
+/.org-id-locations
