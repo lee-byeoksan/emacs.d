@@ -11,6 +11,10 @@
 (use-package cmake-mode
   :ensure t)
 
+;; Protobuf
+(use-package protobuf-mode
+  :ensure t)
+
 (provide 'init-pl)
 
 ;;; init-pl.el ends here
