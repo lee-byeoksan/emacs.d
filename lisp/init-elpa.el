@@ -118,5 +118,9 @@ advice for `require-package', to which ARGS are passed."
 (add-hook 'package-menu-mode-hook 'sanityinc/maybe-widen-package-menu-columns)
 
 
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
