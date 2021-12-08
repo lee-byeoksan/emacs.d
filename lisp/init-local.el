@@ -14,39 +14,50 @@
   (setq mac-option-modifier 'meta))
 
 
-  ;; Terminal
-  (require-package 'vterm)
-(with-eval-after-load 'vterm
+;; Terminal
+(use-package vterm
+  :ensure t
+  :config
   (setq vterm-always-compile-module t)
-  (define-key vterm-mode-map (kbd "C-]") 'vterm--self-insert)
-  (define-key vterm-mode-map (kbd "C-u") 'vterm--self-insert))
+
+  :bind (
+         :map vterm-mode-map
+         ("C-]" . vterm--self-insert)
+         ("C-u" . vterm--self-insert)))
 
 
 ;; Org Roam
-(require-package 'org-roam)
-;; (require-package 'org-roam-dailies)
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  (setq org-roam-directory "~/.orgs/roam")
 
-;; (with-eval-after-load 'org-roam
-;;   )
-(setq org-roam-v2-ack t)
-(setq org-roam-directory "~/.orgs/roam")
-(setq org-roam-completion-everywhere t)
-(global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
-(global-set-key (kbd "C-c n f") 'org-roam-node-find)
-(global-set-key (kbd "C-c n i") 'org-roam-node-insert)
-(org-roam-db-autosync-enable)
+  :config
+  (org-roam-db-autosync-enable)
+  (setq org-roam-completion-everywhere t)
+  (require 'org-roam-dailies)
 
+  ;; Dailies
+  (setq org-roam-dailies-directory "daily")
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?" :target
+           (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+           :unarrowed t)))
 
-;; (setq org-roam-dailies-directory "daily")
-;; (setq org-roam-capture-templates
-;;       '(("d" "default" plain "%?" :target
-;;          (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
-;;          :unnarrowed t)
-;;         ))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         :map org-roam-dailies-map
+         ("y" . org-roam-dailies-capture-yesterday)
+         ("t" . org-roam-dailies-capture-tomorrow))
+
+  :bind-keymap ("C-c n d" . org-roam-dailies-map))
 
 
 ;; Programming
-(require-package 'eglot)
+(use-package eglot
+  :ensure t)
 
 
 ;; Typescript
@@ -54,7 +65,8 @@
 
 
 ;; Protobuf
-(require-package 'protobuf-mode)
+(use-package protobuf-mode
+  :ensure t)
 
 (provide 'init-local)
 ;;; init-local.el ends here
