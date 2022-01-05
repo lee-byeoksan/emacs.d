@@ -62,6 +62,9 @@
 
 ;; Typescript
 (add-hook 'typescript-mode 'eglot-ensure)
+(use-package web-mode
+  :ensure t
+  :mode "\\.tsx\\'")
 
 
 ;; Protobuf
