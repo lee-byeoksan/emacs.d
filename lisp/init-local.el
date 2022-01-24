@@ -71,5 +71,9 @@
 (use-package protobuf-mode
   :ensure t)
 
+;; CMake
+(use-package cmake-mode
+  :ensure t)
+
 (provide 'init-local)
 ;;; init-local.el ends here
