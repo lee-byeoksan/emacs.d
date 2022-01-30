@@ -26,6 +26,15 @@
          ("C-u" . vterm--self-insert)))
 
 
+;; Org
+(setq org-directory "~/.orgs")
+(defvar byeoksan/org-inbox (concat org-directory "/inbox.org"))
+(defvar byeoksan/org-gtd (concat org-directory "/tasks.org"))
+(setq org-default-notes-file byeoksan/org-inbox)
+(setq org-agenda-files
+      (list byeoksan/org-inbox
+            byeoksan/org-gtd))
+
 ;; Org Roam
 (use-package org-roam
   :ensure t
