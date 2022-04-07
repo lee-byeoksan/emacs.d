@@ -68,6 +68,8 @@
 (use-package eglot
   :ensure t)
 
+(use-package pyenv-mode
+  :ensure t)
 
 ;; Typescript
 (add-hook 'typescript-mode 'eglot-ensure)
