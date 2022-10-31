@@ -34,6 +34,7 @@
 (setq org-agenda-files
       (list byeoksan/org-inbox
             byeoksan/org-gtd))
+(setq org-startup-indented t)
 
 ;; Org Roam
 (use-package org-roam
