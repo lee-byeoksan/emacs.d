@@ -25,7 +25,6 @@
          ("C-]" . vterm--self-insert)
          ("C-u" . vterm--self-insert)))
 
-
 ;; Org
 (setq org-directory "~/.orgs")
 (defvar byeoksan/org-inbox (concat org-directory "/inbox.org"))
@@ -66,42 +65,41 @@
 
 
 ;; Programming
+;; https://gist.github.com/gsj987/64d48bf49a374c96421ad20df886e947
 (use-package eglot
-  :ensure t)
+  :ensure t
+  :hook
+  ((typescript-mode typescriptreact-mode) . eglot-ensure)
+  :config
+  (cl-pushnew '((typescript-mode typescriptreact-mode) . ("typescript-language-server" "--stdio"))
+              eglot-server-programs :test #'equal))
 
 (use-package pyenv-mode
   :ensure t)
 
+;; Completion
+;; override init-corfu.el
+(setq completion-cycle-threshold nil)
+
 ;; Typescript
-;; (add-hook 'typescript-mode 'eglot-ensure)
-;; Use tide instead of eglot, eglot + typescript-language-server is way slow
+;; https://notes.alexkehayias.com/setting-up-typescript-and-eslint-with-eglot/
+(cl-defmethod project-root ((project (head eglot-project)))
+  (cdr project))
+(defun my-project-try-tsconfig-json (dir)
+  (when-let* ((found (locate-dominating-file dir "tsconfig.json")))
+    (cons 'eglot-project found)))
+(add-hook 'project-find-functions 'my-project-try-tsconfig-json nil nil)
 
 ;; https://github.com/katspaugh/.emacs.d/blob/master/packages.el
+;; https://vxlabs.com/2022/06/12/typescript-development-with-emacs-tree-sitter-and-lsp-in-2022/
+(use-package web-mode
+  :ensure t)
+
 (use-package typescript-mode
-  :mode (("\\.ts\\'" . typescript-mode))
-  :mode (("\\.tsx\\'" . typescript-mode)))
-
-;; (defun setup-tide-mode ()
-;;   (interactive)
-;;   (defun tide-imenu-index () nil)
-;;   (tide-setup)
-;;   (tide-hl-identifier-mode +1))
-
-;; (use-package tide
-;;   :ensure t
-;;   :after (typescript-mode company flycheck)
-;;   :hook ((typescript-mode . #'setup-tide-mode)
-;;          (js-mode . #'setup-tide-mode)
-;;          (js2-mode . #'setup-tide-mode)
-;;          (rjsx-mode . #'setup-tide-mode)))
-
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         ;; (before-save . tide-format-before-save)
-         ))
+  :config
+  (define-derived-mode typescriptreact-mode web-mode "TypeScriptReact")
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescriptreact-mode)))
 
 (use-package editorconfig
   :ensure t
@@ -115,41 +113,6 @@
   (add-to-list 'apheleia-mode-alist '(typescript-mode . prettier))
   (add-to-list 'apheleia-mode-alist '(javascript-mode . prettier))
   (apheleia-global-mode t))
-
-;; (use-package mmm-mode
-;;   :config
-;;   (progn
-;;     (setq mmm-global-mode t)
-;;     (setq mmm-submode-decoration-level 0) ;; Turn off background highlight
-;;     (mmm-add-classes
-;;      '((mmm-styled-mode
-;;         :submode css-mode
-;;         :front "\\(styled\\|css\\)[.()<>[:alnum:]]?+`"
-;;         :back "`;")))
-;;     (mmm-add-mode-ext-class 'typescript-mode nil 'mmm-styled-mode)
-
-;;     (mmm-add-classes
-
-;;      '((mmm-jsx-mode
-;;         :front "\\(return\s\\|n\s\\|(\n\s*\\)<"
-;;         :front-offset -1
-;;         :back ">\n?\s*)"
-;;         :back-offset 1
-;;         :submode web-mode)))
-;;     (mmm-add-mode-ext-class 'typescript-mode nil 'mmm-jsx-mode)))
-
-;; (defun mmm-reapply ()
-;;   (mmm-mode)
-;;   (mmm-mode))
-
-;; (add-hook 'after-save-hook
-;;           (lambda ()
-;;             (when (string-match-p "\\.tsx?" buffer-file-name)
-;;               (mmm-reapply))))
-
-;; (use-package web-mode
-;;   :ensure t
-;;   :mode "\\.tsx\\'")
 
 ;; Protobuf
 (use-package protobuf-mode
