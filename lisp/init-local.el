@@ -103,6 +103,19 @@
          ;; (before-save . tide-format-before-save)
          ))
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
+(use-package apheleia
+  :ensure t
+  :config
+  (add-to-list 'apheleia-mode-alist '(web-mode . prettier))
+  (add-to-list 'apheleia-mode-alist '(typescript-mode . prettier))
+  (add-to-list 'apheleia-mode-alist '(javascript-mode . prettier))
+  (apheleia-global-mode t))
+
 ;; (use-package mmm-mode
 ;;   :config
 ;;   (progn
