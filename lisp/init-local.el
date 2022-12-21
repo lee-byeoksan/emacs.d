@@ -71,8 +71,23 @@
   :hook
   ((typescript-mode typescriptreact-mode) . eglot-ensure)
   :config
+  ;; Patch to avoid NUL bytes just in case from language server
+  ;; https://github.com/adimit/config/blob/f84b34c04d101bdd33e180c07715ce481608ba9f/emacs/main.org#work-around-null-bytes-in-json-response
+  ;; https://github.com/typescript-language-server/typescript-language-server/issues/559#issuecomment-1259470791
+  (advice-add 'json-parse-string :around
+              (lambda (orig string &rest rest)
+                (apply orig (s-replace "\\u0000" "" string)
+                       rest)))
+  (advice-add 'json-parse-buffer :around
+              (lambda (oldfn &rest args)
+                (save-excursion
+                  (while (search-forward "\\u0000" nil t)
+                    (replace-match "" nil t)))
+                (apply oldfn args)))
   (cl-pushnew '((typescript-mode typescriptreact-mode) . ("typescript-language-server" "--stdio"))
               eglot-server-programs :test #'equal))
+
+
 
 (use-package pyenv-mode
   :ensure t)
