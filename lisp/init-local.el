@@ -87,6 +87,8 @@
   (cl-pushnew '((typescript-mode typescriptreact-mode) . ("typescript-language-server" "--stdio"))
               eglot-server-programs :test #'equal))
 
+(use-package yasnippet
+  :ensure t)
 
 
 (use-package pyenv-mode
