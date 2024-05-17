@@ -90,6 +90,11 @@
 (use-package yasnippet
   :ensure t)
 
+;; To improve eglot performance and prevent laggy typing
+;; https://www.reddit.com/r/emacs/comments/16vixg6/how_to_make_lsp_and_eglot_way_faster_like_neovim/
+;; https://www.reddit.com/r/emacs/comments/1447fy2/comment/jnescet/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+(fset #'jsonrpc--log-event #'ignore)
+(setq eglot-events-buffer-size 0)
 
 (use-package pyenv-mode
   :ensure t)
