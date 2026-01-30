@@ -1,6 +1,6 @@
 ;;; init-theme.el --- Visual theme and appearance -*- lexical-binding: t -*-
 ;;; Commentary:
-;; Configure visual appearance with ef-themes, doom-modeline, and icons.
+;; Configure visual appearance with doom-themes, doom-modeline, and icons.
 ;; Provides a modern, polished UI with rich visual feedback.
 
 ;;; Code:
@@ -15,21 +15,24 @@
              (not (nerd-icons-font-installed-p)))
     (nerd-icons-install-fonts t)))
 
-;; ef-themes: Legible, customizable themes by Protesilaos Stavrou
-(use-package ef-themes
+;; Doom Themes: Popular theme collection with excellent integration
+(use-package doom-themes
   :config
-  ;; Load a specific ef theme
-  ;; Available themes: ef-spring, ef-summer, ef-autumn, ef-winter,
-  ;; ef-frost, ef-dark, ef-light, ef-duo-dark, ef-duo-light, etc.
-  ;; Run M-x ef-themes-select to choose interactively
-  (load-theme 'ef-winter t)
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
   
-  ;; Disable other themes before loading a new one
-  (setq ef-themes-disable-other-themes t)
+  ;; Load a specific doom theme
+  ;; Popular themes: doom-one, doom-vibrant, doom-nord, doom-dracula,
+  ;; doom-solarized-dark, doom-solarized-light, doom-gruvbox, etc.
+  ;; Run M-x load-theme to choose interactively
+  (load-theme 'doom-one t)
   
-  ;; Customize specific faces (optional)
-  ;; (setq ef-themes-headings '((t . (variable-pitch 1.5))))
-  )
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  
+  ;; Corrects (and improves) org-mode's native fontification
+  (doom-themes-org-config))
 
 ;; Doom Modeline: Beautiful and feature-rich mode line
 (use-package doom-modeline
