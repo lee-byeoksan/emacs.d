@@ -44,6 +44,9 @@
 
 ;; Load configuration modules
 (require 'init-platform)
+(require 'init-theme)
+(require 'init-completion)
+(require 'init-navigation)
 (require 'init-vterm)
 (require 'init-lsp)
 (require 'init-typescript)
