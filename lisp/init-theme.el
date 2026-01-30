@@ -26,9 +26,10 @@
 
 ;; Doom Modeline: Beautiful and feature-rich mode line
 (use-package doom-modeline
-  :init
-  (doom-modeline-mode 1)
   :config
+  ;; Enable doom-modeline
+  (doom-modeline-mode 1)
+  
   ;; Height of the mode line
   (setq doom-modeline-height 25)
   
