@@ -38,6 +38,8 @@
 
 ;; Load configuration modules
 (require 'init-platform)
+(require 'init-vterm)
+(require 'init-lsp)
 
 (provide 'init)
 ;;; init.el ends here
