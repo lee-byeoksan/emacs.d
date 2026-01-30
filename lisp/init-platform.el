@@ -8,7 +8,8 @@
 (pcase system-type
   ('darwin
    ;; macOS: Use Command key as Meta for better ergonomics.
-   (setq mac-command-modifier 'meta))
+   (setq mac-command-modifier 'meta)
+   (when (executable-find "gls") (setq insert-directory-program "gls")))
   
   ('gnu/linux
    ;; Linux-specific configuration can go here
