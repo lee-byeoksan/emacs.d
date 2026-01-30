@@ -19,7 +19,7 @@
 
 ;; Dirvish: Modern dired with icons and previews
 (use-package dirvish
-  :init
+  :config
   ;; Replace dired with dirvish
   (dirvish-override-dired-mode)
   :custom

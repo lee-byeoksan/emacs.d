@@ -8,9 +8,9 @@
 
 ;; Vertico: Vertical completion UI
 (use-package vertico
-  :init
-  (vertico-mode)
   :config
+  ;; Enable vertico mode
+  (vertico-mode)
   ;; Number of candidates to display
   (setq vertico-count 20)
   ;; Cycle through candidates
@@ -27,9 +27,9 @@
 
 ;; Marginalia: Rich annotations in minibuffer
 (use-package marginalia
-  :init
-  (marginalia-mode)
   :config
+  ;; Enable marginalia mode
+  (marginalia-mode)
   ;; Show annotations in completion candidates
   ;; Displays file sizes, dates, documentation strings, etc.
   (setq marginalia-align 'right))
