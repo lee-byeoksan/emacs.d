@@ -18,7 +18,13 @@
   
   ;; Kill buffer when vterm process exits.
   ;; Prevents accumulation of dead terminal buffers.
-  (setq vterm-kill-buffer-on-exit t))
+  (setq vterm-kill-buffer-on-exit t)
+  
+  ;; Send control characters directly to the terminal.
+  ;; Empty list means all control characters go to the terminal process.
+  ;; To keep some Emacs bindings, add them to this list.
+  ;; Example: '("C-c" "C-x" "C-g") keeps common Emacs commands.
+  (setq vterm-keymap-exceptions '()))
 
 (provide 'init-vterm)
 ;;; init-vterm.el ends here
