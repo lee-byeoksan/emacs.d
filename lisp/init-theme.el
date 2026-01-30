@@ -8,9 +8,12 @@
 ;; Nerd Icons: Icon fonts for file types and modes
 (use-package nerd-icons
   :config
-  ;; Run M-x nerd-icons-install-fonts on first setup
-  ;; This downloads and installs required icon fonts
-  )
+  ;; Automatically install fonts if not present.
+  ;; Fonts are installed to ~/.local/share/fonts on Linux/macOS.
+  ;; Only runs in GUI mode to avoid issues with batch/daemon startup.
+  (when (and (display-graphic-p)
+             (not (nerd-icons-font-installed-p)))
+    (nerd-icons-install-fonts t)))
 
 ;; ef-themes: Legible, customizable themes by Protesilaos Stavrou
 (use-package ef-themes
