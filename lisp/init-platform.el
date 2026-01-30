@@ -7,13 +7,8 @@
 
 (pcase system-type
   ('darwin
-   ;; macOS: Use Command key as Meta for better ergonomics
-   ;; This allows Cmd+C/V/X to work as standard macOS shortcuts
-   ;; when not overridden by Emacs bindings
-   (setq mac-command-modifier 'meta)
-   ;; Keep Option as super to preserve access to special characters
-   ;; (like © via Option+G) while allowing it as a modifier key
-   (setq mac-option-modifier 'super))
+   ;; macOS: Use Command key as Meta for better ergonomics.
+   (setq mac-command-modifier 'meta))
   
   ('gnu/linux
    ;; Linux-specific configuration can go here
