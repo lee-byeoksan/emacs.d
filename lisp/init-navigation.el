@@ -82,10 +82,11 @@
 (use-package treemacs-projectile
   :after (treemacs project))
 
-;; Treemacs integration with magit (if installed)
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
+;; Treemacs integration with magit (optional, only if magit is available)
+;; Disabled by default to avoid dependency issues.
+;; Uncomment if you use magit and want treemacs integration.
+;; (use-package treemacs-magit
+;;   :after (treemacs magit))
 
 (provide 'init-navigation)
 ;;; init-navigation.el ends here
