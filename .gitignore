@@ -1,0 +1,25 @@
+# Package directories (version-isolated)
+elpa-*/
+
+# Native compilation cache
+eln-cache/
+
+# Compiled Elisp files
+*.elc
+
+# Backup files
+*~
+\#*\#
+.\#*
+
+# Auto-save files
+auto-save-list/
+
+# Custom file (machine-specific settings)
+custom.el
+
+# Various caches
+.cache/
+url/
+transient/
+request/
