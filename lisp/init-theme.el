@@ -24,12 +24,8 @@
   ;; Corrects (and improves) org-mode's native fontification
   (doom-themes-org-config))
 
-;; String manipulation library (required by doom-modeline)
-(use-package s)
-
 ;; Doom Modeline: Beautiful and feature-rich mode line
 (use-package doom-modeline
-  :after s
   :config
   ;; Enable doom-modeline
   (doom-modeline-mode 1)
