@@ -46,6 +46,7 @@
 (require 'init-platform)
 (require 'init-vterm)
 (require 'init-lsp)
+(require 'init-typescript)
 
 (provide 'init)
 ;;; init.el ends here
