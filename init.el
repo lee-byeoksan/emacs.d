@@ -37,7 +37,7 @@
   (load custom-file))
 
 ;; Load configuration modules
-;; (require 'init-example)
+(require 'init-platform)
 
 (provide 'init)
 ;;; init.el ends here
