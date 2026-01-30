@@ -1,19 +1,9 @@
 ;;; init-theme.el --- Visual theme and appearance -*- lexical-binding: t -*-
 ;;; Commentary:
-;; Configure visual appearance with doom-themes, doom-modeline, and icons.
+;; Configure visual appearance with doom-themes and doom-modeline.
 ;; Provides a modern, polished UI with rich visual feedback.
 
 ;;; Code:
-
-;; Nerd Icons: Icon fonts for file types and modes
-(use-package nerd-icons
-  :config
-  ;; Automatically install fonts if not present.
-  ;; Fonts are installed to ~/.local/share/fonts on Linux/macOS.
-  ;; Only runs in GUI mode to avoid issues with batch/daemon startup.
-  (when (and (display-graphic-p)
-             (not (nerd-icons-font-installed-p)))
-    (nerd-icons-install-fonts t)))
 
 ;; Doom Themes: Popular theme collection with excellent integration
 (use-package doom-themes
@@ -45,8 +35,8 @@
   ;; Width of mode line bar
   (setq doom-modeline-bar-width 4)
   
-  ;; Show file icons in mode line
-  (setq doom-modeline-icon t)
+  ;; Disable file icons in mode line
+  (setq doom-modeline-icon nil)
   
   ;; Show file encoding info
   (setq doom-modeline-buffer-encoding t)

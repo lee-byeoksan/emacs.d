@@ -23,15 +23,15 @@
   ;; Replace dired with dirvish
   (dirvish-override-dired-mode)
   :custom
-  ;; Show file icons
+  ;; Mode line format
   (dirvish-mode-line-format '(:left (sort symlink) :right (omit yank index)))
   ;; Preview file contents in side window
   (dirvish-use-header-line t)
   (dirvish-use-mode-line t)
   :config
-  ;; Enable file preview
+  ;; Enable file attributes (without icons)
   (setq dirvish-attributes
-        '(all-the-icons file-time file-size collapse subtree-state vc-state git-msg))
+        '(file-time file-size collapse subtree-state vc-state git-msg))
   ;; Open files in preview window on hover
   (setq dirvish-preview-dispatchers
         (cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers))
@@ -81,12 +81,6 @@
 ;; Treemacs integration with projectile/project.el
 (use-package treemacs-projectile
   :after (treemacs project))
-
-;; Treemacs icons using nerd-icons
-(use-package treemacs-nerd-icons
-  :after treemacs
-  :config
-  (treemacs-load-theme "nerd-icons"))
 
 ;; Treemacs integration with magit (if installed)
 (use-package treemacs-magit
