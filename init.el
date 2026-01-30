@@ -19,6 +19,12 @@
 
 (package-initialize)
 
+;; Suppress byte-compilation warnings from third-party packages during startup.
+;; This prevents cluttering the warnings buffer with issues in package source code
+;; that we don't control (e.g., vterm's docstring escape sequences).
+;; Warnings from our own configuration files are still visible.
+(add-to-list 'warning-suppress-types '(bytecomp))
+
 ;; Fallback for Emacs versions before 29 where use-package is not built-in.
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
