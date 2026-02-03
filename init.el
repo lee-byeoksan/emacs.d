@@ -13,7 +13,9 @@
             (setq gc-cons-threshold (* 16 1024 1024))))
 
 (setq package-archives
-      '(("melpa" . "https://melpa.org/packages/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+        ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 
@@ -45,6 +47,7 @@
 (require 'init-theme)
 (require 'init-completion)
 (require 'init-navigation)
+(require 'init-vcs)
 (require 'init-vterm)
 (require 'init-syntax)
 (require 'init-code)
