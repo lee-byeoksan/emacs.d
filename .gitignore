@@ -23,3 +23,6 @@ custom.el
 url/
 transient/
 request/
+tree-sitter/
+tramp
+TODO
