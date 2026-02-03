@@ -47,6 +47,7 @@
 (require 'init-navigation)
 (require 'init-vterm)
 (require 'init-syntax)
+(require 'init-code)
 (require 'init-lsp)
 (require 'init-typescript)
 
