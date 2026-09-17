@@ -36,20 +36,17 @@
   (with-eval-after-load 'vc
     (define-key vc-prefix-map (kbd "l") 'sanityinc/magit-or-vc-log-file)))
 
-
 (with-eval-after-load 'magit
   (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up))
 
-(maybe-require-package 'magit-todos)
-
-(when (maybe-require-package 'git-commit)
+;; git-commit is bundled with Magit; do not try to install it separately.
+(when (require 'git-commit nil t)
   (add-hook 'git-commit-mode-hook 'goto-address-mode))
 
 
 ;; Convenient binding for vc-git-grep
 (with-eval-after-load 'vc
   (define-key vc-prefix-map (kbd "f") 'vc-git-grep))
-
 
 
 ;;; git-svn support
@@ -85,7 +82,6 @@
   (let* ((default-directory (vc-git-root dir))
          (compilation-buffer-name-function (lambda (major-mode-name) "*git-svn*")))
     (compile (concat "git svn " command))))
-
 
 (provide 'init-git)
 ;;; init-git.el ends here

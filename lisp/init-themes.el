@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
@@ -22,7 +21,6 @@
 
 (add-hook 'after-init-hook 'reapply-themes)
 
-
 
 ;; Toggle between light and dark
 
@@ -38,7 +36,6 @@
   (setq custom-enabled-themes '(sanityinc-tomorrow-bright))
   (reapply-themes))
 
-
 (when (maybe-require-package 'dimmer)
   (setq-default dimmer-fraction 0.15)
   (add-hook 'after-init-hook 'dimmer-mode)
@@ -52,7 +49,6 @@
     (defun sanityinc/display-non-graphic-p ()
       (not (display-graphic-p)))
     (add-to-list 'dimmer-exclusion-predicates 'sanityinc/display-non-graphic-p)))
-
 
 (provide 'init-themes)
 ;;; init-themes.el ends here

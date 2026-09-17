@@ -34,7 +34,6 @@
 
 ;; Bootstrap config
 
-
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
@@ -58,8 +57,6 @@
 
 ;; Load configs for specific features and modes
 (require-package 'diminish)
-(maybe-require-package 'scratch)
-(require-package 'command-log-mode)
 
 (require 'init-frame-hooks)
 (require 'init-xterm)
@@ -86,7 +83,6 @@
 (require 'init-whitespace)
 
 (require 'init-vc)
-(require 'init-darcs)
 (require 'init-git)
 (require 'init-github)
 
@@ -94,43 +90,33 @@
 
 (require 'init-compile)
 (require 'init-crontab)
-(require 'init-textile)
+
 (require 'init-markdown)
 (require 'init-csv)
-(require 'init-erlang)
+
 (require 'init-javascript)
-(require 'init-php)
+
 (require 'init-org)
 (require 'init-nxml)
 (require 'init-html)
 (require 'init-css)
 (require 'init-haml)
-(require 'init-http)
+
 (require 'init-python)
-(require 'init-haskell)
-(require 'init-elm)
-(require 'init-purescript)
+
 (require 'init-ruby)
-(require 'init-rails)
+
 (require 'init-sql)
-(require 'init-ocaml)
-(require 'init-j)
-(require 'init-nim)
+
 (require 'init-rust)
 (require 'init-toml)
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
-(require 'init-nix)
 (maybe-require-package 'nginx-mode)
-(maybe-require-package 'just-mode)
-(maybe-require-package 'justl)
 
 (require 'init-paredit)
 (require 'init-lisp)
-(require 'init-sly)
-(require 'init-clojure)
-(require 'init-clojure-cider)
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))
@@ -138,31 +124,16 @@
 (require 'init-misc)
 
 (require 'init-folding)
-(require 'init-dash)
 
-(require 'init-ledger)
 (require 'init-lua)
-(require 'init-uiua)
-(require 'init-terminals)
 
 ;; Extra packages which don't require any configuration
 
-(require-package 'sudo-edit)
-(require-package 'gnuplot)
-(require-package 'htmlize)
-(when *is-a-mac*
-  (require-package 'osx-location))
 (maybe-require-package 'dotenv-mode)
 (maybe-require-package 'shfmt)
 
-(when (maybe-require-package 'uptimes)
-  (setq-default uptimes-keep-count 200)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
-
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))
-
-(require 'init-direnv)
 
 (when (and (require 'treesit nil t)
            (fboundp 'treesit-available-p)

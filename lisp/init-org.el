@@ -22,9 +22,6 @@
 
 ;;; Code:
 
-(when *is-a-mac*
-  (maybe-require-package 'grab-mac-link))
-
 (maybe-require-package 'org-cliplink)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
@@ -39,7 +36,6 @@
 (define-key sanityinc/org-global-prefix-map (kbd "o") 'org-clock-out)
 (define-key global-map (kbd "C-c o") sanityinc/org-global-prefix-map)
 
-
 ;; Various preferences
 (setq org-log-done t
       org-edit-timestamp-down-means-later t
@@ -51,7 +47,6 @@
       org-export-kill-product-buffer-when-displayed t
       org-tags-column 80)
 
-
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
 ;; Re-align tags when window shape changes
@@ -59,10 +54,7 @@
   (add-hook 'org-agenda-mode-hook
             (lambda () (add-hook 'window-configuration-change-hook 'org-agenda-align-tags nil t))))
 
-
 
-
-(maybe-require-package 'writeroom-mode)
 
 (define-minor-mode prose-mode
   "Set up a buffer for prose editing.
@@ -72,8 +64,6 @@ typical word processor."
   :init-value nil :lighter " Prose" :keymap nil
   (if prose-mode
       (progn
-        (when (fboundp 'writeroom-mode)
-          (writeroom-mode 1))
         (setq truncate-lines nil)
         (setq word-wrap t)
         (setq cursor-type 'bar)
@@ -97,12 +87,9 @@ typical word processor."
     (buffer-face-mode -1)
     ;; (delete-selection-mode -1)
     (flyspell-mode -1)
-    (visual-line-mode -1)
-    (when (fboundp 'writeroom-mode)
-      (writeroom-mode 0))))
+    (visual-line-mode -1)))
 
 ;;(add-hook 'org-mode-hook 'buffer-face-mode)
-
 
 (setq org-support-shift-select t)
 
@@ -116,7 +103,6 @@ typical word processor."
         ("n" "note" entry (file "")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
         ))
-
 
 
 ;;; Refiling
@@ -170,12 +156,10 @@ typical word processor."
       (quote (("NEXT" :inherit warning)
               ("PROJECT" :inherit font-lock-string-face))))
 
-
 
 ;;; Agenda views
 
 (setq-default org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3))
-
 
 (let ((active-project-match "-INBOX/PROJECT"))
 
@@ -260,7 +244,6 @@ typical word processor."
             ;;             (org-match-list-sublevels t)))
             )))))
 
-
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
 
 
@@ -283,7 +266,6 @@ typical word processor."
 (setq org-time-clocksum-format
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
-
 
 ;;; Show the clocked-in task - if any - in the header line
 (defun sanityinc/show-org-clock-in-header-line ()
@@ -300,7 +282,6 @@ typical word processor."
   (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
   (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
 
-
 
 (when (and *is-a-mac* (file-directory-p "/Applications/org-clock-statusbar.app"))
   (add-hook 'org-clock-in-hook
@@ -310,11 +291,9 @@ typical word processor."
             (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
                                 "tell application \"org-clock-statusbar\" to clock out"))))
 
-
 
 ;; TODO: warn about inconsistent items, e.g. TODO inside non-PROJECT
 ;; TODO: nested projects!
-
 
 
 ;;; Archiving
@@ -322,15 +301,7 @@ typical word processor."
 (setq org-archive-mark-done nil)
 (setq org-archive-location "%s_archive::* Archive")
 
-
-
 
-
-(require-package 'org-pomodoro)
-(setq org-pomodoro-keep-killed-pomodoro-time t)
-(with-eval-after-load 'org-agenda
-  (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
-
 
 ;; ;; Show iCal calendars in the org agenda
 ;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
@@ -352,12 +323,14 @@ typical word processor."
 ;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
 ;;                 (insert (match-string 0))))))
 
-
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
   (when *is-a-mac*
-    (define-key org-mode-map (kbd "M-h") nil)
-    (define-key org-mode-map (kbd "C-c g") 'grab-mac-link)))
+    (define-key org-mode-map (kbd "M-h") nil)))
+
+(with-eval-after-load 'ox-html
+  ;; Export source blocks without the optional htmlize package.
+  (setq org-html-htmlize-output-type nil))
 
 (with-eval-after-load 'org
   (org-babel-do-load-languages
@@ -369,11 +342,7 @@ typical word processor."
       (ditaa . t)
       (dot . t)
       (emacs-lisp . t)
-      (gnuplot . t)
-      (haskell . nil)
       (latex . t)
-      (ledger . t)
-      (ocaml . nil)
       (octave . t)
       (plantuml . t)
       (python . t)
@@ -383,7 +352,6 @@ typical word processor."
       (shell . t)
       (sql . t)
       (sqlite . t)))))
-
 
 (provide 'init-org)
 ;;; init-org.el ends here

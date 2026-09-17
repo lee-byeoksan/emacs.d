@@ -5,7 +5,7 @@
 (maybe-require-package 'json-mode)
 (maybe-require-package 'js2-mode)
 (maybe-require-package 'typescript-mode)
-(maybe-require-package 'prettier-js)
+(maybe-require-package 'add-node-modules-path)
 
 
 ;;; Basic js-mode setup
@@ -17,7 +17,6 @@
   (sanityinc/major-mode-lighter 'js-jsx-mode "JSX"))
 
 (setq-default js-indent-level 2)
-
 
 
 ;; js2-mode
@@ -66,24 +65,7 @@
   (with-eval-after-load 'js2-mode
     (define-key js2-mode-map (kbd "M-.") nil)))
 
-
 
-;; Run and interact with an inferior JS via js-comint.el
-
-(when (maybe-require-package 'js-comint)
-  (setq js-comint-program-command "node")
-
-  (defvar inferior-js-minor-mode-map (make-sparse-keymap))
-  (define-key inferior-js-minor-mode-map "\C-x\C-e" 'js-send-last-sexp)
-  (define-key inferior-js-minor-mode-map "\C-cb" 'js-send-buffer)
-
-  (define-minor-mode inferior-js-keys-mode
-    "Bindings for communicating with an inferior js interpreter."
-    :init-value nil :lighter " InfJS" :keymap inferior-js-minor-mode-map)
-
-  (dolist (hook '(js2-mode-hook js-mode-hook))
-    (add-hook hook 'inferior-js-keys-mode)))
-
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

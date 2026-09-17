@@ -8,22 +8,37 @@
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "<f8>") 'display-line-numbers-mode)
 
-
 ;; Overrides
 (when *is-a-mac*
   (setq mac-option-modifier 'meta))
 
-
 ;; Terminal
-(use-package vterm
-  :ensure t
-  :config
-  (setq vterm-always-compile-module t)
 
-  :bind (
-         :map vterm-mode-map
-         ("C-]" . vterm--self-insert)
-         ("C-u" . vterm--self-insert)))
+(use-package ghostel
+  :ensure t
+  :custom
+  (ghostel-shell-integration nil)
+  (ghostel-glyph-scale-floor 1.0))
+
+(use-package ghostel-ime
+  :hook (ghostel-mode . ghostel-ime-mode))
+
+;; Emacs AI Management
+(use-package eam
+  :ensure nil
+  :vc (
+       :url "https://github.com/lee-byeoksan/emacs-packages.git"
+       :branch "main"
+       :rev :newest
+       :lisp-dir "eam/lisp")
+  :demand t
+  :init
+  (setq eam-directory (expand-file-name "~/.eam/"))
+  :config
+  (require 'eam-app)
+  (eam-keys-mode 1)
+  :custom
+  (eam-quick-directory "~/workspace/"))
 
 ;; Org
 (setq org-directory "~/.orgs")
@@ -56,20 +71,14 @@
 
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         :map org-roam-dailies-map
-         ("y" . org-roam-dailies-capture-yesterday)
-         ("t" . org-roam-dailies-capture-tomorrow))
-
-  :bind-keymap ("C-c n d" . org-roam-dailies-map))
-
+         ("C-c n i" . org-roam-node-insert)))
 
 ;; Programming
 ;; https://gist.github.com/gsj987/64d48bf49a374c96421ad20df886e947
 (use-package eglot
   :ensure t
   :hook
-  ((typescript-mode typescriptreact-mode python-mode) . eglot-ensure)
+  ((typescript-mode typescriptreact-mode) . eglot-ensure)
   :config
   ;; Patch to avoid NUL bytes just in case from language server
   ;; https://github.com/adimit/config/blob/f84b34c04d101bdd33e180c07715ce481608ba9f/emacs/main.org#work-around-null-bytes-in-json-response
@@ -87,17 +96,11 @@
   (cl-pushnew '((typescript-mode typescriptreact-mode) . ("typescript-language-server" "--stdio"))
               eglot-server-programs :test #'equal))
 
-(use-package yasnippet
-  :ensure t)
-
 ;; To improve eglot performance and prevent laggy typing
 ;; https://www.reddit.com/r/emacs/comments/16vixg6/how_to_make_lsp_and_eglot_way_faster_like_neovim/
 ;; https://www.reddit.com/r/emacs/comments/1447fy2/comment/jnescet/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 (fset #'jsonrpc--log-event #'ignore)
 (setq eglot-events-buffer-size 0)
-
-(use-package pyenv-mode
-  :ensure t)
 
 ;; Completion
 ;; override init-corfu.el

@@ -2,13 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'unfill)
-
 (when (fboundp 'electric-pair-mode)
   (add-hook 'after-init-hook 'electric-pair-mode))
 (add-hook 'after-init-hook 'electric-indent-mode)
-
-(maybe-require-package 'list-unicode-display)
 
 
 ;;; Some basic preferences
@@ -43,28 +39,16 @@
 
 (add-hook 'after-init-hook 'transient-mark-mode)
 
-
 
 ;; Huge files
 
 (when (fboundp 'so-long-enable)
   (add-hook 'after-init-hook 'so-long-enable))
 
-(require-package 'vlf)
-
-(defun ffap-vlf ()
-  "Find file at point with VLF."
-  (interactive)
-  (let ((file (ffap-file-at-point)))
-    (unless (file-exists-p file)
-      (error "File does not exist: %s" file))
-    (vlf file)))
-
 
 ;;; A simple visible bell which works in all terminal types
 (require-package 'mode-line-bell)
 (add-hook 'after-init-hook 'mode-line-bell-mode)
-
 
 
 ;;; Newline behaviour (see also electric-indent-mode, enabled above)
@@ -115,7 +99,6 @@
 ;;; Zap *up* to char is a handy pair for zap-to-char
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
-
 
 (require-package 'browse-kill-ring)
 (setq browse-kill-ring-separator "\f")
@@ -127,7 +110,6 @@
 (with-eval-after-load 'page-break-lines
   (add-to-list 'page-break-lines-modes 'browse-kill-ring-mode))
 
-
 ;; Don't disable narrowing commands
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
@@ -135,7 +117,6 @@
 ;; Don't disable case-change functions
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
 
 ;; Show matching parens
 (add-hook 'after-init-hook 'show-paren-mode)
@@ -152,16 +133,6 @@
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
-(when (maybe-require-package 'avy)
-  (global-set-key (kbd "C-;") 'avy-goto-char-timer))
-
-(require-package 'multiple-cursors)
-;; multiple-cursors
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
 ;; Train myself to use M-f and M-b instead
 (global-unset-key [M-left])
 (global-unset-key [M-right])
@@ -175,7 +146,6 @@
 
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
 
-
 
 ;;; Page break lines
 
@@ -183,7 +153,6 @@
   (add-hook 'after-init-hook 'global-page-break-lines-mode)
   (with-eval-after-load 'page-break-lines
     (diminish 'page-break-lines-mode)))
-
 
 
 ;; Shift lines up and down with M-up and M-down. When paredit is enabled,
@@ -210,15 +179,6 @@
           ((backward-up-list arg)))))
 
 (global-set-key [remap backward-up-list] 'sanityinc/backward-up-sexp) ; C-M-u, C-M-up
-
-
-
-;;; Cut/copy the current line if no region is active
-(require-package 'whole-line-or-region)
-(add-hook 'after-init-hook 'whole-line-or-region-global-mode)
-(with-eval-after-load 'whole-line-or-region
-  (diminish 'whole-line-or-region-local-mode))
-
 
 
 ;; M-^ is inconvenient, so also bind M-j
@@ -260,7 +220,6 @@ ORIG is the advised function, which is called with its ARGS."
     (apply orig args)))
 
 (advice-add 'kmacro-call-macro :around 'sanityinc/disable-features-during-macro-call)
-
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here

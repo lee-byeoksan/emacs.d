@@ -12,7 +12,6 @@
 (setq-default initial-scratch-message
               (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
 
-
 (defun sanityinc/headerise-elisp ()
   "Add minimal header and footer to an elisp buffer in order to placate flycheck."
   (interactive)
@@ -45,7 +44,6 @@
 
 (when (maybe-require-package 'ipretty)
   (add-hook 'after-init-hook 'ipretty-mode))
-
 
 (defun sanityinc/make-read-only (_expression out-buffer-name &rest _)
   "Enable `view-mode' in the output buffer - if any - so it can be closed with `\"q\"."
@@ -123,7 +121,6 @@ there is no current file, eval the current buffer."
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol t)
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-partially t))
 
-
 
 ;; Automatic byte compilation
 
@@ -136,11 +133,6 @@ there is no current file, eval the current buffer."
 ;; Load .el if newer than corresponding .elc
 
 (setq load-prefer-newer t)
-
-
-
-(require-package 'immortal-scratch)
-(add-hook 'after-init-hook 'immortal-scratch-mode)
 
 
 ;;; Support byte-compilation in a sub-process, as
@@ -158,7 +150,6 @@ there is no current file, eval the current buffer."
        (list "-Q" "-batch" "-f" "batch-byte-compile" filename)
        " ")))))
 
-
 
 ;; Enable desired features for all lisp modes
 
@@ -170,7 +161,6 @@ there is no current file, eval the current buffer."
   '(enable-paredit-mode
     sanityinc/enable-check-parens-on-save)
   "Hook run in all Lisp modes.")
-
 
 (when (maybe-require-package 'aggressive-indent)
   (add-to-list 'sanityinc/lispy-modes-hook 'aggressive-indent-mode))
@@ -189,7 +179,6 @@ there is no current file, eval the current buffer."
 
 (add-to-list 'auto-mode-alist '("\\.emacs-project\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("archive-contents\\'" . emacs-lisp-mode))
-
 
 
 ;; Delete .elc files when reverting the .el from VC or magit
@@ -224,13 +213,6 @@ there is no current file, eval the current buffer."
 (advice-add 'magit-revert-buffers :around 'sanityinc/reverting)
 (advice-add 'vc-revert-buffer-internal :around 'sanityinc/reverting)
 
-
-
-(require-package 'macrostep)
-
-(with-eval-after-load 'lisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-c x") 'macrostep-expand))
-
 
 
 ;; A quick way to jump to the definition of a function given its key binding
@@ -256,7 +238,6 @@ there is no current file, eval the current buffer."
 
 (when (maybe-require-package 'package-lint-flymake)
   (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
-
 
 
 ;; ERT

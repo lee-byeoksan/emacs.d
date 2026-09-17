@@ -18,7 +18,6 @@
 (setq-default switch-window-timeout nil)
 (global-set-key (kbd "C-x o") 'switch-window)
 
-
 
 ;; When splitting window, show (other-buffer) in the new window
 
@@ -85,7 +84,6 @@ Call a second time to restore the original window configuration."
 
 (global-set-key (kbd "<f7>") 'sanityinc/split-window)
 
-
 
 
 (defun sanityinc/toggle-current-window-dedication ()
@@ -100,14 +98,10 @@ Call a second time to restore the original window configuration."
 
 (global-set-key (kbd "C-c <down>") 'sanityinc/toggle-current-window-dedication)
 
-
 
 
 (unless (memq window-system '(nt w32))
-  (require-package 'windswap)
-  (add-hook 'after-init-hook (apply-partially 'windmove-default-keybindings 'control))
-  (add-hook 'after-init-hook (apply-partially 'windswap-default-keybindings 'shift 'control)))
-
+  (add-hook 'after-init-hook (apply-partially 'windmove-default-keybindings 'control)))
 
 (provide 'init-windows)
 ;;; init-windows.el ends here

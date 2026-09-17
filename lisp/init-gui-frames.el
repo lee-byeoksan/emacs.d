@@ -12,14 +12,12 @@
 
 (global-set-key (kbd "C-z") 'sanityinc/maybe-suspend-frame)
 
-
 
 ;; Suppress GUI features
 
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 (setq inhibit-startup-screen t)
-
 
 
 ;; Window size and features
@@ -61,11 +59,9 @@
 (global-set-key (kbd "M-C-9") (lambda () (interactive) (sanityinc/adjust-opacity nil 2)))
 (global-set-key (kbd "M-C-7") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
 
-
 (when *is-a-mac*
   (when (maybe-require-package 'ns-auto-titlebar)
     (ns-auto-titlebar-mode)))
-
 
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
@@ -84,14 +80,9 @@
 (require-package 'default-text-scale)
 (add-hook 'after-init-hook 'default-text-scale-mode)
 
-
-
-(require-package 'disable-mouse)
-
 
 (when (fboundp 'pixel-scroll-precision-mode)
   (pixel-scroll-precision-mode))
-
 
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here
